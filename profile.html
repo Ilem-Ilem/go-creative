@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ darkMode: true }" :class="{ 'dark': darkMode }">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarah Williams - Lead Designer | goCreative</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        purple: {
+                            dark: '#0F0824',
+                            light: '#1A1038',
+                            accent: '#7C3AED',
+                            highlight: '#9F67FF'
+                        },
+                        light: {
+                            text: '#2D3748',
+                            subtle: '#4A5568',
+                            glass: 'rgba(255, 255, 255, 0.7)'
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #2D3748;
+        }
+        
+        .dark .glass {
+            background: rgba(15, 8, 36, 0.6);
+            color: #E2E8F0;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #2D3748;
+        }
+        
+        .dark .glass-card {
+            background: rgba(15, 8, 36, 0.6);
+            color: #E2E8F0;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .grid-bg {
+            background-image: 
+                linear-gradient(rgba(156, 39, 176, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(156, 39, 176, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #9F67FF 0%, #6E45E2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(159, 103, 255, 0.25);
+        }
+        
+        .floating-element {
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .blob {
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.2;
+        }
+        
+        .grid-overlay {
+            background-image: radial-gradient(circle, rgba(159, 103, 255, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: linear-gradient(90deg, #9F67FF 0%, #6E45E2 100%);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Form styles */
+        .form-input {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            color: #2D3748;
+            transition: all 0.3s ease;
+        }
+        
+        .dark .form-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #E2E8F0;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #9F67FF;
+            box-shadow: 0 0 0 3px rgba(159, 103, 255, 0.2);
+        }
+        
+        /* Light mode specific adjustments */
+        .light-text {
+            color: #2D3748;
+        }
+        
+        .light-subtle {
+            color: #4A5568;
+        }
+        
+        .dark .light-text {
+            color: #E2E8F0;
+        }
+        
+        .dark .light-subtle {
+            color: #CBD5E0;
+        }
+        
+        /* Skill bar styles */
+        .skill-bar {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            height: 8px;
+        }
+        
+        .dark .skill-bar {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .skill-progress {
+            height: 100%;
+            border-radius: 20px;
+            background: linear-gradient(90deg, #9F67FF 0%, #6E45E2 100%);
+        }
+        
+        /* Project card hover effect */
+        .project-card {
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px -10px rgba(159, 103, 255, 0.3);
+        }
+        
+        /* Profile header styles */
+        .profile-header {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 dark:bg-purple-dark dark:text-gray-200 transition-colors duration-500 grid-bg">
+    <!-- Animated background elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="blob bg-purple-accent w-80 h-80 absolute top-20 left-20 opacity-20 floating-element"></div>
+        <div class="blob bg-purple-highlight w-96 h-96 absolute bottom-10 right-20 opacity-15 floating-element" style="animation-delay: 2s"></div>
+        <div class="blob bg-purple-accent w-72 h-72 absolute top-1/3 right-1/4 opacity-15 floating-element" style="animation-delay: 4s"></div>
+        <div class="absolute inset-0 grid-overlay"></div>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="fixed w-full glass py-4 z-50" x-data="{ open: false }">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-purple-accent">goCreative</a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html#about" class="nav-link light-text hover:text-purple-highlight transition-colors">About</a>
+                <a href="index.html#services" class="nav-link light-text hover:text-purple-highlight transition-colors">Services</a>
+                <a href="index.html#projects" class="nav-link light-text hover:text-purple-highlight transition-colors">Projects</a>
+                <a href="index.html#team" class="nav-link light-text hover:text-purple-highlight transition-colors">Team</a>
+                <a href="index.html#testimonials" class="nav-link light-text hover:text-purple-highlight transition-colors">Testimonials</a>
+                <a href="index.html#contact" class="nav-link light-text hover:text-purple-highlight transition-colors">Contact</a>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <!-- Dark/Light Mode Toggle -->
+                <button @click="darkMode = !darkMode" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-purple-light transition-colors">
+                    <i x-show="!darkMode" class="fas fa-moon text-purple-accent"></i>
+                    <i x-show="darkMode" class="fas fa-sun text-yellow-300" x-cloak></i>
+                </button>
+                
+                <!-- Mobile Menu Button -->
+                <button @click="open = !open" class="md:hidden w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-purple-light transition-colors">
+                    <i class="fas fa-bars text-purple-accent"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div x-show="open" class="md:hidden glass mt-4 p-4 rounded-lg mx-4" x-cloak>
+            <div class="flex flex-col space-y-3">
+                <a href="index.html#about" class="light-text hover:text-purple-highlight transition-colors py-2">About</a>
+                <a href="index.html#services" class="light-text hover:text-purple-highlight transition-colors py-2">Services</a>
+                <a href="index.html#projects" class="light-text hover:text-purple-highlight transition-colors py-2">Projects</a>
+                <a href="index.html#team" class="light-text hover:text-purple-highlight transition-colors py-2">Team</a>
+                <a href="index.html#testimonials" class="light-text hover:text-purple-highlight transition-colors py-2">Testimonials</a>
+                <a href="index.html#contact" class="light-text hover:text-purple-highlight transition-colors py-2">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-24 pb-16 container mx-auto px-4">
+        <!-- Profile Header -->
+        <div class="glass-card rounded-2xl p-6 mb-6 profile-header fade-in">
+            <div class="flex flex-col md:flex-row items-center md:items-start">
+                <div class="relative mb-4 md:mb-0 md:mr-6">
+                    <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-purple-accent/20">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
+                             alt="Sarah Williams" class="w-full h-full object-cover">
+                    </div>
+                    <button class="absolute bottom-0 right-0 w-8 h-8 rounded-full glass flex items-center justify-center shadow-md hover:bg-white/20 transition-colors">
+                        <i class="fas fa-camera text-purple-accent text-xs"></i>
+                    </button>
+                </div>
+                
+                <div class="flex-1 text-center md:text-left">
+                    <h1 class="text-2xl md:text-3xl font-bold light-text">Sarah Williams</h1>
+                    <p class="light-subtle mt-1">Lead Designer at goCreative</p>
+                    <p class="light-subtle text-sm mt-2"><i class="fas fa-map-marker-alt mr-2"></i>San Francisco, CA</p>
+                    
+                    <div class="flex flex-wrap justify-center md:justify-start gap-2 mt-4">
+                        <span class="text-xs px-3 py-1.5 glass rounded-full text-purple-accent border border-purple-accent/20">UI/UX Design</span>
+                        <span class="text-xs px-3 py-1.5 glass rounded-full text-purple-accent border border-purple-accent/20">Product Strategy</span>
+                        <span class="text-xs px-3 py-1.5 glass rounded-full text-purple-accent border border-purple-accent/20">Wireframing</span>
+                        <span class="text-xs px-3 py-1.5 glass rounded-full text-purple-accent border border-purple-accent/20">User Research</span>
+                    </div>
+                </div>
+                
+                <div class="mt-4 md:mt-0">
+                    <button class="px-4 py-2 bg-gradient-to-r from-purple-accent to-purple-highlight text-white rounded-xl font-medium hover:opacity-90 transition-colors shadow-lg">
+                        <i class="fas fa-paper-plane mr-2"></i> Contact Me
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Left Column -->
+            <div class="lg:col-span-1 space-y-6">
+                <!-- About Card -->
+                <div class="glass-card rounded-2xl p-6 fade-in">
+                    <h2 class="text-xl font-bold mb-4 light-text">About Me</h2>
+                    <p class="light-subtle mb-4">With over 8 years of experience in UI/UX design, I create digital experiences that are not only visually appealing but also highly functional and user-friendly.</p>
+                    <p class="light-subtle">My design philosophy centers around solving real user problems while creating aesthetically pleasing interfaces that delight users.</p>
+                </div>
+
+                <!-- Details Card -->
+                <div class="glass-card rounded-2xl p-6 fade-in">
+                    <h2 class="text-xl font-bold mb-4 light-text">Details</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <h3 class="font-medium light-text">Email</h3>
+                            <p class="light-subtle">sarah@gocreative.com</p>
+                        </div>
+                        <div>
+                            <h3 class="font-medium light-text">Location</h3>
+                            <p class="light-subtle">San Francisco, California</p>
+                        </div>
+                        <div>
+                            <h3 class="font-medium light-text">Status</h3>
+                            <p class="light-subtle">Available for new projects</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills Card -->
+                <div class="glass-card rounded-2xl p-6 fade-in">
+                    <h2 class="text-xl font-bold mb-4 light-text">Skills</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="light-text font-medium">UI/UX Design</span>
+                                <span class="light-text">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="light-text font-medium">Wireframing</span>
+                                <span class="light-text">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="light-text font-medium">User Research</span>
+                                <span class="light-text">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="light-text font-medium">Figma</span>
+                                <span class="light-text">98%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 98%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="lg:col-span-2 space-y-6">
+                <!-- Experience Card -->
+                <div class="glass-card rounded-2xl p-6 fade-in">
+                    <h2 class="text-xl font-bold mb-4 light-text">Experience</h2>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="font-bold light-text">Lead Designer</h3>
+                                    <p class="light-subtle">goCreative Agency</p>
+                                </div>
+                                <span class="light-subtle text-sm">2020 - Present</span>
+                            </div>
+                            <p class="light-subtle mt-2">Leading design projects for major clients, managing a team of designers, and establishing design systems and processes.</p>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="font-bold light-text">Senior UI/UX Designer</h3>
+                                    <p class="light-subtle">TechInnovate Inc.</p>
+                                </div>
+                                <span class="light-subtle text-sm">2017 - 2020</span>
+                            </div>
+                            <p class="light-subtle mt-2">Designed user interfaces for web and mobile applications, conducted user research, and created interactive prototypes.</p>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="font-bold light-text">Product Designer</h3>
+                                    <p class="light-subtle">StartupGrid</p>
+                                </div>
+                                <span class="light-subtle text-sm">2015 - 2017</span>
+                            </div>
+                            <p class="light-subtle mt-2">Worked on various product design projects, from concept to execution, focusing on creating intuitive user experiences.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 glass border-t border-white/10 relative mt-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="index.html" class="text-2xl font-bold text-purple-accent">goCreative</a>
+                    <p class="mt-2 light-subtle">Crafting digital excellence since 2015</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="index.html" class="light-text hover:text-purple-highlight transition-colors">Back to Home</a>
+                    <a href="#" class="light-text hover:text-purple-highlight transition-colors">Privacy Policy</a>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 mt-8 pt-8 text-center">
+                <p class="light-subtle">© 2023 goCreative Digital Agency. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ darkMode: true }" :class="{ 'dark': darkMode }">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>goCreative Digital Agency</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        purple: {
+                            dark: '#0F0824',
+                            light: '#1A1038',
+                            accent: '#7C3AED',
+                            highlight: '#9F67FF'
+                        },
+                        light: {
+                            text: '#2D3748',
+                            subtle: '#4A5568',
+                            glass: 'rgba(255, 255, 255, 0.7)'
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': {
+                                transform: 'translateY(0)'
+                            },
+                            '50%': {
+                                transform: 'translateY(-20px)'
+                            },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #2D3748;
+        }
+
+        .dark .glass {
+            background: rgba(15, 8, 36, 0.6);
+            color: #E2E8F0;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .grid-bg {
+            background-image:
+                linear-gradient(45deg, rgba(156, 39, 176, 0.5) 2px, transparent 2px),
+                linear-gradient(45deg, rgba(156, 39, 176, 0.5) 2px, transparent 2px);
+            background-size: 40px 40px;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .hero-bg {
+            background: linear-gradient(135deg, #0F0824 0%, #2D1B69 100%);
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #9F67FF 0%, #6E45E2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(159, 103, 255, 0.25);
+        }
+
+        .floating-element {
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .floating-element-delayed {
+            animation: float 8s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+
+        .floating-element-more-delayed {
+            animation: float 8s ease-in-out infinite;
+            animation-delay: 4s;
+        }
+
+        .blob {
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.2;
+        }
+
+        .grid-overlay {
+            background-image: radial-gradient(circle, rgba(159, 103, 255, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: linear-gradient(90deg, #9F67FF 0%, #6E45E2 100%);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Testimonial slider styles */
+        .testimonial-slider {
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+        }
+
+        .testimonial-slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Form styles */
+        .form-input {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            color: #2D3748;
+            transition: all 0.3s ease;
+        }
+
+        .dark .form-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #E2E8F0;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #9F67FF;
+            box-shadow: 0 0 0 3px rgba(159, 103, 255, 0.2);
+        }
+
+        /* Light mode specific adjustments */
+        .light-text {
+            color: #2D3748;
+        }
+
+        .light-subtle {
+            color: #4A5568;
+        }
+
+        .dark .light-text {
+            color: #E2E8F0;
+        }
+
+        .dark .light-subtle {
+            color: #CBD5E0;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-800 dark:bg-purple-dark dark:text-gray-200 transition-colors duration-500 grid-bg">
+    <!-- Animated background elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="blob bg-purple-accent w-80 h-80 absolute top-20 left-20 opacity-20 floating-element"></div>
+        <div class="blob bg-purple-highlight w-96 h-96 absolute bottom-10 right-20 opacity-15 floating-element-delayed">
+        </div>
+        <div
+            class="blob bg-purple-accent w-72 h-72 absolute top-1/3 right-1/4 opacity-15 floating-element-more-delayed">
+        </div>
+        <div class="absolute inset-0 grid-overlay"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full glass py-4 z-50" x-data="{ open: false }">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+
+            <div class="flex items-center space-x-3">
+                <img src="/img/logo.jpg" alt="Logo"
+                    class="w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-purple-900 object-cover" />
+                <a href="#" class="text-2xl font-bold text-purple-700 dark:text-purple-400">
+                    goCreative
+                </a>
+            </div>
+
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="nav-link light-text hover:text-purple-highlight transition-colors">About</a>
+                <a href="#services"
+                    class="nav-link light-text hover:text-purple-highlight transition-colors">Services</a>
+                <a href="#projects"
+                    class="nav-link light-text hover:text-purple-highlight transition-colors">Projects</a>
+                <a href="#team" class="nav-link light-text hover:text-purple-highlight transition-colors">Team</a>
+                <a href="#testimonials"
+                    class="nav-link light-text hover:text-purple-highlight transition-colors">Testimonials</a>
+                <a href="#contact" class="nav-link light-text hover:text-purple-highlight transition-colors">Contact</a>
+            </div>
+
+            <div class="flex items-center space-x-4">
+                <!-- Dark/Light Mode Toggle -->
+                <button @click="darkMode = !darkMode"
+                    class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-purple-light transition-colors">
+                    <i x-show="!darkMode" class="fas fa-moon text-purple-accent"></i>
+                    <i x-show="darkMode" class="fas fa-sun text-yellow-300" x-cloak></i>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button @click="open = !open"
+                    class="md:hidden w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-purple-light transition-colors">
+                    <i class="fas fa-bars text-purple-accent"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div x-show="open" class="md:hidden glass mt-4 p-4 rounded-lg mx-4" x-cloak>
+            <div class="flex flex-col space-y-3">
+                <a href="#about" class="light-text hover:text-purple-highlight transition-colors py-2">About</a>
+                <a href="#services" class="light-text hover:text-purple-highlight transition-colors py-2">Services</a>
+                <a href="#projects" class="light-text hover:text-purple-highlight transition-colors py-2">Projects</a>
+                <a href="#team" class="light-text hover:text-purple-highlight transition-colors py-2">Team</a>
+                <a href="#testimonials"
+                    class="light-text hover:text-purple-highlight transition-colors py-2">Testimonials</a>
+                <a href="#contact" class="light-text hover:text-purple-highlight transition-colors py-2">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="min-h-screen flex items-center pt-16 pb-24 hero-bg relative overflow-hidden">
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-black/20"></div>
+
+        <!-- Social Media Links (Right Side with Line) -->
+        <div class="absolute right-5 top-1/2 -translate-y-1/2 z-20 flex flex-col items-center">
+            <!-- Line (before icons) -->
+            <div class="w-px h-16 bg-gradient-to-b from-purple-500/50 to-transparent"></div>
+
+            <a href="https://web.facebook.com/profile.php?id=100063670885317" target="_blank"
+                class="w-12 h-12 flex items-center justify-center rounded-full glass border border-white/20 hover:border-purple-accent hover:scale-110 transition-all shadow-lg my-3">
+                <i class="fab fa-facebook-f text-xl light-text"></i>
+            </a>
+            <div class="w-px h-4 bg-gradient-to-b from-purple-500/50 to-transparent"></div>
+
+            <a href="#"
+                class="w-12 h-12 flex items-center justify-center rounded-full glass border border-white/20 hover:border-purple-accent hover:scale-110 transition-all shadow-lg my-3">
+                <i class="fab fa-twitter text-xl light-text"></i>
+            </a>
+            <div class="w-px h-4 bg-gradient-to-b from-purple-500/50 to-transparent"></div>
+
+            <a href="#"
+                class="w-12 h-12 flex items-center justify-center rounded-full glass border border-white/20 hover:border-purple-accent hover:scale-110 transition-all shadow-lg my-3">
+                <i class="fab fa-linkedin-in text-xl light-text"></i>
+            </a>
+            <div class="w-px h-4 bg-gradient-to-b from-purple-500/50 to-transparent"></div>
+
+            <a href="#"
+                class="w-12 h-12 flex items-center justify-center rounded-full glass border border-white/20 hover:border-purple-accent hover:scale-110 transition-all shadow-lg my-3">
+                <i class="fab fa-instagram text-xl light-text"></i>
+            </a>
+
+            <!-- Line (after icons) -->
+            <div class="w-px h-16 bg-gradient-to-t from-purple-500/50 to-transparent"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="container mx-auto px-4 relative z-10 mt-10">
+            <div class="max-w-3xl glass rounded-3xl p-8 md:p-12 shadow-2xl border border-white/10">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+                    <span class="gradient-text">Building Web Experiences</span> That Inspire
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 light-text">Web, Mobile, and Digital solutions crafted for growth.
+                </p>
+
+                <!-- Buttons -->
+                <div class="flex flex-wrap gap-4">
+                    <a href="#projects"
+                        class="px-8 py-3 bg-gradient-to-r from-purple-accent to-purple-highlight text-white rounded-full hover:opacity-90 transition-all transform hover:-translate-y-1 hover:shadow-xl">
+                        View Projects
+                    </a>
+                    <a href="#contact"
+                        class="px-8 py-3 glass rounded-full light-text hover:bg-white/5 transition-all transform hover:-translate-y-1 hover:shadow-xl border border-white/10">
+                        Hire Us
+                    </a>
+                    <a href="#about"
+                        class="px-8 py-3 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-full animate-bounce shadow-lg hover:shadow-2xl">
+                        Get to Know Us
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Decoration -->
+        <div
+            class="absolute right-10 bottom-10 w-64 h-64 rounded-full glass animate-float hidden lg:flex items-center justify-center border border-purple-accent/30">
+            <div class="w-56 h-56 rounded-full glass animate-float-delayed border border-purple-accent/20"></div>
+        </div>
+
+        <!-- Extra Floating Glow -->
+        <div class="absolute top-20 right-1/3 w-32 h-32 bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-32 left-1/4 w-40 h-40 bg-pink-500/20 rounded-full blur-3xl animate-pulse"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 relative">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 light-text">About <span
+                    class="gradient-text">Us</span></h2>
+
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+                <div class="w-full md:w-1/2">
+                    <div class="rounded-3xl overflow-hidden glass p-2 border border-white/10">
+                        <div class="rounded-2xl overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                                alt="Team meeting"
+                                class="w-full h-auto rounded-2xl transform hover:scale-105 transition-transform duration-700">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full md:w-1/2">
+                    <h3 class="text-2xl font-bold mb-6 light-text">Crafting <span class="gradient-text">Digital
+                            Excellence</span></h3>
+                    <p class="mb-6 light-subtle">
+                        At goCreative, we fuse innovation, design, and technology to create digital experiences that captivate and perform. From sleek websites to powerful applications, our mission is to transform ideas into solutions that inspire action and fuel growth. With a passion for creativity and a commitment to excellence, we don’t just build projects—we craft lasting digital journeys that elevate brands and connect with people.</p>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div
+                            class="glass rounded-2xl p-4 text-center border border-white/5 hover:border-purple-accent/30 transition-all duration-300">
+                            <div
+                                class="w-12 h-12 rounded-full bg-purple-accent/10 flex items-center justify-center mx-auto mb-2">
+                                <i class="fas fa-desktop text-purple-accent text-xl"></i>
+                            </div>
+                            <h4 class="font-bold light-text">Web Development</h4>
+                        </div>
+                        <div
+                            class="glass rounded-2xl p-4 text-center border border-white/5 hover:border-purple-accent/30 transition-all duration-300">
+                            <div
+                                class="w-12 h-12 rounded-full bg-purple-accent/10 flex items-center justify-center mx-auto mb-2">
+                                <i class="fas fa-mobile-alt text-purple-accent text-xl"></i>
+                            </div>
+                            <h4 class="font-bold light-text">UI/UX Design</h4>
+                        </div>
+                        <div
+                            class="glass rounded-2xl p-4 text-center border border-white/5 hover:border-purple-accent/30 transition-all duration-300 col-span-2">
+                            <div
+                                class="w-12 h-12 rounded-full bg-purple-accent/10 flex items-center justify-center mx-auto mb-2">
+                                <i class="fas fa-paint-brush text-purple-accent text-xl"></i>
+                            </div>
+                            <h4 class="font-bold light-text">Custom Application</h4>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 relative">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 light-text">Our <span
+                    class="gradient-text">Services</span></h2>
+            <p class="text-center text-xl mb-16 max-w-2xl mx-auto light-subtle">We offer a comprehensive range of
+                digital services to help your business thrive</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div
+                    class="glass rounded-3xl p-6 service-card transition-all duration-500 border border-white/5 hover:border-purple-accent/30">
+                    <div
+                        class="w-16 h-16 rounded-full glass flex items-center justify-center mb-6 border border-purple-accent/20">
+                        <i class="fas fa-code text-2xl text-purple-accent"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 light-text">Web Development</h3>
+                    <p class="light-subtle">Custom websites and web applications built with the latest technologies for
+                        optimal performance.</p>
+                </div>
+
+                <div
+                    class="glass rounded-3xl p-6 service-card transition-all duration-500 border border-white/5 hover:border-purple-accent/30">
+                    <div
+                        class="w-16 h-16 rounded-full glass flex items-center justify-center mb-6 border border-purple-accent/20">
+                        <i class="fas fa-mobile text-2xl text-purple-accent"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 light-text">Mobile Apps</h3>
+                    <p class="light-subtle">Cross-platform mobile applications that provide seamless experiences on all
+                        devices.</p>
+                </div>
+
+                <div
+                    class="glass rounded-3xl p-6 service-card transition-all duration-500 border border-white/5 hover:border-purple-accent/30">
+                    <div
+                        class="w-16 h-16 rounded-full glass flex items-center justify-center mb-6 border border-purple-accent/20">
+                        <i class="fas fa-pencil-ruler text-2xl text-purple-accent"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 light-text">UI/UX Design</h3>
+                    <p class="light-subtle">User-centered designs that enhance engagement and deliver intuitive
+                        experiences.</p>
+                </div>
+
+                <div
+                    class="glass rounded-3xl p-6 service-card transition-all duration-500 border border-white/5 hover:border-purple-accent/30">
+                    <div
+                        class="w-16 h-16 rounded-full glass flex items-center justify-center mb-6 border border-purple-accent/20">
+                        <i class="fas fa-bullhorn text-2xl text-purple-accent"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 light-text">Digital Marketing</h3>
+                    <p class="light-subtle">Strategic marketing campaigns that increase visibility and drive
+                        conversions.</p>
+                </div>
+
+                <div
+                    class="glass rounded-3xl p-6 service-card transition-all duration-500 border border-white/5 hover:border-purple-accent/30">
+                    <div
+                        class="w-16 h-16 rounded-full glass flex items-center justify-center mb-6 border border-purple-accent/20">
+                        <i class="fas fa-search text-2xl text-purple-accent"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 light-text">SEO Optimization</h3>
+                    <p class="light-subtle">Data-driven SEO strategies to improve your search rankings and organic
+                        traffic.</p>
+                </div>
+
+                <div
+                    class="glass rounded-3xl p-6 service-card transition-all duration-500 border border-white/5 hover:border-purple-accent/30">
+                    <div
+                        class="w-16 h-16 rounded-full glass flex items-center justify-center mb-6 border border-purple-accent/20">
+                        <i class="fas fa-cloud text-2xl text-purple-accent"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 light-text">Cloud Solutions</h3>
+                    <p class="light-subtle">Scalable cloud infrastructure and services to support your business growth.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 relative">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 light-text">
+                Our <span class="gradient-text">Projects</span>
+            </h2>
+            <p class="text-center text-xl mb-16 max-w-2xl mx-auto light-subtle">
+                Check out some of our recent work that we're proud of
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Project 1 -->
+                <div
+                    class="rounded-3xl overflow-hidden glass border border-white/10 shadow-xl hover:shadow-2xl transition-all duration-500">
+                    <img src="/img/Ai-acade.PNG" alt="Project 1" class="w-full h-64 object-cover">
+                    <div class="p-6 flex flex-col items-center text-center">
+                        <h3 class="text-2xl font-bold text-white mb-2">The Ai Academy</h3>
+                        <p class="text-white/90 mb-4">
+                            A next-generation AI-powered learning platform designed to make education more interactive,
+                            personalized, and accessible.
+                            It combines modern web technologies with smart automation to deliver engaging courses and
+                            seamless student experiences.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6 justify-center">
+                            <span class="bg-purple-accent/80 text-white px-3 py-1 rounded-full text-sm">React</span>
+                            <span class="bg-purple-accent/80 text-white px-3 py-1 rounded-full text-sm">Next.js</span>
+                            <span class="bg-purple-accent/80 text-white px-3 py-1 rounded-full text-sm">Prisma</span>
+                        </div>
+                        <a href="https://theaistore.site/" target="_blank"
+                            class="px-6 py-2 glass rounded-full text-white border border-white/20 hover:border-purple-accent/50 transition-colors">
+                            View Site
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div
+                    class="rounded-3xl overflow-hidden glass border border-white/10 shadow-xl hover:shadow-2xl transition-all duration-500">
+                    <img src="/img/Ai-store.PNG" alt="Project 2" class="w-full h-64 object-cover">
+                    <div class="p-6 flex flex-col items-center text-center">
+                        <h3 class="text-2xl font-bold text-white mb-2">Ai Store</h3>
+                        <p class="text-white/90 mb-4">
+                            A fully featured AI-driven e-commerce platform that enhances online shopping with
+                            intelligent product recommendations,
+                            personalized experiences, and secure transactions. Built for scalability and smooth user
+                            journeys.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6 justify-center">
+                            <span class="bg-purple-accent/80 text-white px-3 py-1 rounded-full text-sm">Vue.js</span>
+                            <span class="bg-purple-accent/80 text-white px-3 py-1 rounded-full text-sm">Laravel</span>
+                            <span class="bg-purple-accent/80 text-white px-3 py-1 rounded-full text-sm">MySQL</span>
+                        </div>
+                        <a href="https://theaistore.site/" target="_blank"
+                            class="px-6 py-2 glass rounded-full text-white border border-white/20 hover:border-purple-accent/50 transition-colors">
+                            View Case Study
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div
+                    class="rounded-3xl overflow-hidden glass border border-white/10 shadow-xl hover:shadow-2xl transition-all duration-500">
+                    <img src="/img/chelsea.PNG" alt="Project 3" class="w-full h-64 object-cover">
+                    <div class="p-6 flex flex-col items-center text-center">
+                        <h3 class="text-2xl font-bold text-white mb-2">Chelsea Holiday Home</h3>
+                        <p class="text-white/90 mb-4">
+                            A luxury holiday apartment booking system that simplifies reservations with a sleek
+                            interface, secure payments, and real-time availability.
+                            Designed for travelers seeking comfort and elegance with a seamless digital experience.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6 justify-center">
+                            <span class="bg-purple-accent/80 text-white px-3 py-1 rounded-full text-sm">Blade</span>
+                            <span class="bg-purple-accent/80 text-white px-3 py-1 rounded-full text-sm">Laravel</span>
+                            <span class="bg-purple-accent/80 text-white px-3 py-1 rounded-full text-sm">MySQL</span>
+                        </div>
+                        <a href="https://thechelseacalabar.com/" target="_blank"
+                            class="px-6 py-2 glass rounded-full text-white border border-white/20 hover:border-purple-accent/50 transition-colors">
+                            View Case Study
+                        </a>
+                    </div>
+                </div>
+                <!-- project 4 -->
+                <div
+                    class="rounded-3xl overflow-hidden glass border border-white/10 shadow-xl hover:shadow-2xl transition-all duration-500 lg:col-span-4">
+                    <img src="/img/queendom.PNG" alt="Project 1" class="w-full h-64 object-cover">
+                    <div class="p-6 flex flex-col items-center text-center">
+                        <h3 class="text-2xl font-bold text-white mb-2">African Queendom</h3>
+                        <p class="text-white/90 mb-4">
+                            A cultural heritage platform that celebrates and preserves African traditions, history, and
+                            leadership.
+                            It integrates storytelling, digital media, and modern design to empower communities and
+                            share Africa’s legacy with the world.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6 justify-center">
+                            <span class="bg-purple-accent/80 text-white px-3 py-1 rounded-full text-sm">React</span>
+                            <span class="bg-purple-accent/80 text-white px-3 py-1 rounded-full text-sm">Next.js</span>
+                            <span class="bg-purple-accent/80 text-white px-3 py-1 rounded-full text-sm">Prisma</span>
+                        </div>
+                        <a href="https://africanqueendom.org/" target="_blank"
+                            class="px-6 py-2 glass rounded-full text-white border border-white/20 hover:border-purple-accent/50 transition-colors">
+                            View Site
+                        </a>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Team Section -->
+    <section id="team" class="py-20 relative">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 light-text">Our <span
+                    class="gradient-text">Team</span></h2>
+            <p class="text-center text-xl mb-16 max-w-2xl mx-auto light-subtle">Meet the talented people behind our
+                success</p>
+
+            <!-- CEO -->
+            <div class="flex justify-center mb-16">
+                <div
+                    class="glass rounded-3xl p-8 max-w-md text-center transform scale-110 z-10 relative border border-purple-accent/30 shadow-xl">
+                    <div class="w-40 h-40 rounded-full overflow-hidden mx-auto mb-6 border-4 border-purple-accent/20">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                            alt="CEO" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-2xl font-bold light-text">Michael Johnson</h3>
+                    <p class="text-purple-accent mb-4">CEO & Founder</p>
+                    <p class="light-subtle mb-4">With over 15 years of experience in the digital industry, Michael leads
+                        our team with vision and expertise.</p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full glass flex items-center justify-center border border-white/10 hover:border-purple-accent/50">
+                            <i class="fab fa-linkedin-in text-purple-accent"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full glass flex items-center justify-center border border-white/10 hover:border-purple-accent/50">
+                            <i class="fab fa-twitter text-purple-accent"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Members -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Team Member 1 -->
+                <div
+                    class="glass rounded-3xl p-6 text-center border border-white/5 hover:border-purple-accent/30 transition-all duration-500">
+                    <div class="w-32 h-32 rounded-full overflow-hidden mx-auto mb-6 border-4 border-purple-accent/20">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                            alt="Team Member" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-bold light-text">Sarah Williams</h3>
+                    <p class="text-purple-accent mb-4">Lead Designer</p>
+                    <p class="light-subtle mb-4">Sarah creates stunning interfaces that balance aesthetics with
+                        functionality.</p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full glass flex items-center justify-center border border-white/10 hover:border-purple-accent/50">
+                            <i class="fab fa-dribbble text-purple-accent"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full glass flex items-center justify-center border border-white/10 hover:border-purple-accent/50">
+                            <i class="fab fa-behance text-purple-accent"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div
+                    class="glass rounded-3xl p-6 text-center border border-white/5 hover:border-purple-accent/30 transition-all duration-500">
+                    <div class="w-32 h-32 rounded-full overflow-hidden mx-auto mb-6 border-4 border-purple-accent/20">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                            alt="Team Member" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-bold light-text">David Chen</h3>
+                    <p class="text-purple-accent mb-4">Senior Developer</p>
+                    <p class="light-subtle mb-4">David turns complex problems into elegant code solutions.</p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full glass flex items-center justify-center border border-white/10 hover:border-purple-accent/50">
+                            <i class="fab fa-github text-purple-accent"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full glass flex items-center justify-center border border-white/10 hover:border-purple-accent/50">
+                            <i class="fab fa-stack-overflow text-purple-accent"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div
+                    class="glass rounded-3xl p-6 text-center border border-white/5 hover:border-purple-accent/30 transition-all duration-500">
+                    <div class="w-32 h-32 rounded-full overflow-hidden mx-auto mb-6 border-4 border-purple-accent/20">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                            alt="Team Member" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-bold light-text">Emily Rodriguez</h3>
+                    <p class="text-purple-accent mb-4">Marketing Director</p>
+                    <p class="light-subtle mb-4">Emily develops strategies that connect brands with their audiences.</p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full glass flex items-center justify-center border border-white/10 hover:border-purple-accent/50">
+                            <i class="fab fa-linkedin-in text-purple-accent"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full glass flex items-center justify-center border border-white/10 hover:border-purple-accent/50">
+                            <i class="fab fa-instagram text-purple-accent"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 relative">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 light-text">Client <span
+                    class="gradient-text">Testimonials</span></h2>
+            <p class="text-center text-xl mb-16 max-w-2xl mx-auto light-subtle">What our clients say about working with
+                us</p>
+
+            <div x-data="{ activeSlide: 0, slides: [0, 1, 2] }" class="relative">
+                <!-- Testimonial Cards -->
+                <div class="glass rounded-3xl p-8 md:p-12 max-w-4xl mx-auto border border-white/10">
+                    <div x-show="activeSlide === 0" class="text-center" x-cloak>
+                        <div
+                            class="w-24 h-24 rounded-full overflow-hidden mx-auto mb-6 border-4 border-purple-accent/20">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                                alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-xl italic mb-6 light-text">"goCreative transformed our online presence
+                            completely. Their team delivered a stunning website that has increased our conversion rate
+                            by 40%. Their attention to detail and professionalism throughout the project was
+                            impressive."</p>
+                        <h4 class="font-bold text-lg light-text">James Wilson</h4>
+                        <p class="text-purple-accent">CEO, TechInnovate</p>
+                    </div>
+
+                    <div x-show="activeSlide === 1" class="text-center" x-cloak>
+                        <div
+                            class="w-24 h-24 rounded-full overflow-hidden mx-auto mb-6 border-4 border-purple-accent/20">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                                alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-xl italic mb-6 light-text">"Working with goCreative was a game-changer for our
+                            business. Their mobile app development expertise helped us create an intuitive platform that
+                            our customers love. They were responsive, innovative, and delivered beyond our
+                            expectations."</p>
+                        <h4 class="font-bold text-lg light-text">Sarah Thompson</h4>
+                        <p class="text-purple-accent">Product Director, FinSolutions</p>
+                    </div>
+
+                    <div x-show="activeSlide === 2" class="text-center" x-cloak>
+                        <div
+                            class="w-24 h-24 rounded-full overflow-hidden mx-auto mb-6 border-4 border-purple-accent/20">
+                            <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                                alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-xl italic mb-6 light-text">"The branding strategy developed by goCreative
+                            perfectly captured our company's vision. Their team took the time to understand our market
+                            and delivered a comprehensive digital marketing campaign that has significantly increased
+                            our brand awareness."</p>
+                        <h4 class="font-bold text-lg light-text">Robert Martinez</h4>
+                        <p class="text-purple-accent">Marketing Director, LuxeBrands</p>
+                    </div>
+
+                    <!-- Navigation Arrows -->
+                    <div class="absolute inset-y-0 left-4 flex items-center">
+                        <button @click="activeSlide = activeSlide === 0 ? slides.length - 1 : activeSlide - 1"
+                            class="w-10 h-10 rounded-full glass flex items-center justify-center border border-white/10 hover:border-purple-accent/50">
+                            <i class="fas fa-chevron-left text-purple-accent"></i>
+                        </button>
+                    </div>
+                    <div class="absolute inset-y-0 right-4 flex items-center">
+                        <button @click="activeSlide = activeSlide === slides.length - 1 ? 0 : activeSlide + 1"
+                            class="w-10 h-10 rounded-full glass flex items-center justify-center border border-white/10 hover:border-purple-accent/50">
+                            <i class="fas fa-chevron-right text-purple-accent"></i>
+                        </button>
+                    </div>
+
+                    <!-- Indicators -->
+                    <div class="flex justify-center space-x-2 mt-8">
+                        <template x-for="slide in slides" :key="slide">
+                            <button @click="activeSlide = slide" class="w-3 h-3 rounded-full transition-colors"
+                                :class="activeSlide === slide ? 'bg-purple-accent' : 'bg-gray-400'"></button>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 relative">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 light-text">Get In <span
+                    class="gradient-text">Touch</span></h2>
+            <p class="text-center text-xl mb-16 max-w-2xl mx-auto light-subtle">Ready to start your next project?
+                Contact us today</p>
+
+            <div class="flex flex-col lg:flex-row gap-12">
+                <!-- Contact Form -->
+                <div class="w-full lg:w-2/3">
+                    <div class="glass rounded-3xl p-8 border border-white/10">
+                        <form class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block mb-2 font-medium light-text">Your Name</label>
+                                    <input type="text" id="name" class="w-full form-input rounded-lg px-4 py-3"
+                                        placeholder="John Doe">
+                                </div>
+                                <div>
+                                    <label for="email" class="block mb-2 font-medium light-text">Email Address</label>
+                                    <input type="email" id="email" class="w-full form-input rounded-lg px-4 py-3"
+                                        placeholder="john@company.com">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="subject" class="block mb-2 font-medium light-text">Subject</label>
+                                <input type="text" id="subject" class="w-full form-input rounded-lg px-4 py-3"
+                                    placeholder="Project Discussion">
+                            </div>
+                            <div>
+                                <label for="message" class="block mb-2 font-medium light-text">Your Message</label>
+                                <textarea id="message" rows="5" class="w-full form-input rounded-lg px-4 py-3"
+                                    placeholder="Tell us about your project..."></textarea>
+                            </div>
+                            <button type="submit"
+                                class="w-full px-8 py-4 bg-gradient-to-r from-purple-accent to-purple-highlight text-white rounded-lg hover:opacity-90 transition-all transform hover:-translate-y-1 shadow-lg font-bold">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="w-full lg:w-1/3">
+                    <div class="glass rounded-3xl p-8 border border-white/10 h-full">
+                        <h3 class="text-xl font-bold mb-6 light-text">Contact Information</h3>
+
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-purple-accent/10 flex items-center justify-center mr-4">
+                                    <i class="fas fa-map-marker-alt text-purple-accent"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1 light-text">Address</h4>
+                                    <p class="light-subtle">123 Creative Street<br>Digital City, DC 10101</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-purple-accent/10 flex items-center justify-center mr-4">
+                                    <i class="fas fa-phone text-purple-accent"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1 light-text">Phone</h4>
+                                    <p class="light-subtle">+1 (555) 123-4567</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-purple-accent/10 flex items-center justify-center mr-4">
+                                    <i class="fas fa-envelope text-purple-accent"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1 light-text">Email</h4>
+                                    <p class="light-subtle">hello@gocreative.com</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-purple-accent/10 flex items-center justify-center mr-4">
+                                    <i class="fas fa-clock text-purple-accent"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1 light-text">Working Hours</h4>
+                                    <p class="light-subtle">Mon - Fri: 9AM - 6PM<br>Sat: 10AM - 4PM</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-6 border-t border-white/10">
+                            <h4 class="font-bold mb-4 light-text">Follow Us</h4>
+                            <div class="flex space-x-4">
+                                <a href="#"
+                                    class="w-10 h-10 rounded-full glass flex items-center justify-center border border-white/10 hover:border-purple-accent/50">
+                                    <i class="fab fa-facebook-f text-purple-accent"></i>
+                                </a>
+                                <a href="#"
+                                    class="w-10 h-10 rounded-full glass flex items-center justify-center border border-white/10 hover:border-purple-accent/50">
+                                    <i class="fab fa-twitter text-purple-accent"></i>
+                                </a>
+                                <a href="#"
+                                    class="w-10 h-10 rounded-full glass flex items-center justify-center border border-white/10 hover:border-purple-accent/50">
+                                    <i class="fab fa-instagram text-purple-accent"></i>
+                                </a>
+                                <a href="#"
+                                    class="w-10 h-10 rounded-full glass flex items-center justify-center border border-white/10 hover:border-purple-accent/50">
+                                    <i class="fab fa-linkedin-in text-purple-accent"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 glass border-t border-white/10 relative">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="text-2xl font-bold text-purple-accent">goCreative</a>
+                    <p class="mt-2 light-subtle">Crafting digital excellence since 2015</p>
+                </div>
+
+                <div class="flex space-x-6">
+                    <a href="#" class="light-text hover:text-purple-highlight transition-colors">Privacy Policy</a>
+                    <a href="#" class="light-text hover:text-purple-highlight transition-colors">Terms of Service</a>
+                    <a href="#" class="light-text hover:text-purple-highlight transition-colors">Careers</a>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 mt-8 pt-8 text-center">
+                <p class="light-subtle">© 2023 goCreative Digital Agency. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
