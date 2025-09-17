@@ -5,6 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>goCreative Digital Agency</title>
+    <meta name="description"
+        content="We blend creativity with technical expertise to deliver digital solutions that not only look stunning but also drive real business results.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://go-creative.vercel.app/">
+    <meta property="og:title" content="goCreative Digital Agency">
+    <meta property="og:description"
+        content="We blend creativity with technical expertise to deliver digital solutions that not only look stunning but also drive real business results.">
+    <meta property="og:image" content="https://go-creative.vercel.app/img/logo.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://go-creative.vercel.app/">
+    <meta name="twitter:title" content="goCreative Digital Agency">
+    <meta name="twitter:description"
+        content="We blend creativity with technical expertise to deliver digital solutions that not only look stunning but also drive real business results.">
+    <meta name="twitter:image" content="https://go-creative.vercel.app/img/logo.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/img/logo.jpg">
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -797,44 +818,46 @@
                                 Send Message
                             </button>
                         </form>
-                
+
                         <script>
                             document.getElementById("contactForm").addEventListener("submit", function (e) {
                                 e.preventDefault();
-                
+
                                 const name = document.getElementById("name").value.trim();
                                 const email = document.getElementById("email").value.trim();
                                 const subject = document.getElementById("subject").value.trim();
                                 const message = document.getElementById("message").value.trim();
-                
+
                                 // Basic validation
-                                if (!name || !email || !subject || !message) {
+                                if (!name || !email || !subject || !message)
+                                {
                                     alert("Please fill in all fields.");
                                     return;
                                 }
-                
+
                                 // Simple email check
                                 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                                if (!emailPattern.test(email)) {
+                                if (!emailPattern.test(email))
+                                {
                                     alert("Please enter a valid email address.");
                                     return;
                                 }
-                
+
                                 // Encode message
                                 const text = encodeURIComponent(
                                     `New Contact Message:\nName: ${name}\nEmail: ${email}\nSubject: ${subject}\nMessage: ${message}`
                                 );
-                
+
                                 const phone = "2348065373747"; // no plus sign
                                 const url = `https://wa.me/${phone}?text=${text}`;
-                
+
                                 // Redirect in same tab
                                 window.location.href = url;
                             });
                         </script>
                     </div>
                 </div>
-                
+
 
                 <!-- Contact Information -->
                 <div class="w-full lg:w-1/3">
