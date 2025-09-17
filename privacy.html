@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ darkMode: true }" :class="{ 'dark': darkMode }">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - goCreative Digital Agency</title>
+    <meta name="description"
+        content="Privacy Policy for goCreative Digital Agency. Learn how we collect, use, and protect your personal information.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://go-creative.vercel.app/privacy">
+    <meta property="og:title" content="Privacy Policy - goCreative Digital Agency">
+    <meta property="og:description"
+        content="Privacy Policy for goCreative Digital Agency. Learn how we collect, use, and protect your personal information.">
+    <meta property="og:image" content="https://go-creative.vercel.app/img/logo.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://go-creative.vercel.app/privacy">
+    <meta name="twitter:title" content="Privacy Policy - goCreative Digital Agency">
+    <meta name="twitter:description"
+        content="Privacy Policy for goCreative Digital Agency. Learn how we collect, use, and protect your personal information.">
+    <meta name="twitter:image" content="https://go-creative.vercel.app/img/logo.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/img/logo.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        purple: {
+                            dark: '#0F0824',
+                            light: '#1A1038',
+                            accent: '#7C3AED',
+                            highlight: '#9F67FF'
+                        },
+                        light: {
+                            text: '#2D3748',
+                            subtle: '#4A5568',
+                            glass: 'rgba(255, 255, 255, 0.7)'
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': {
+                                transform: 'translateY(0)'
+                            },
+                            '50%': {
+                                transform: 'translateY(-20px)'
+                            },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #2D3748;
+        }
+
+        .dark .glass {
+            background: rgba(15, 8, 36, 0.6);
+            color: #E2E8F0;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .grid-bg {
+            background-image:
+                linear-gradient(45deg, rgba(156, 39, 176, 0.5) 2px, transparent 2px),
+                linear-gradient(45deg, rgba(156, 39, 176, 0.5) 2px, transparent 2px);
+            background-size: 40px 40px;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #9F67FF 0%, #6E45E2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .blob {
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.2;
+        }
+
+        .grid-overlay {
+            background-image: radial-gradient(circle, rgba(159, 103, 255, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: linear-gradient(90deg, #9F67FF 0%, #6E45E2 100%);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Light mode specific adjustments */
+        .light-text {
+            color: #2D3748;
+        }
+
+        .light-subtle {
+            color: #4A5568;
+        }
+
+        .dark .light-text {
+            color: #E2E8F0;
+        }
+
+        .dark .light-subtle {
+            color: #CBD5E0;
+        }
+        
+        .privacy-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .privacy-list {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .privacy-list li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-800 dark:bg-purple-dark dark:text-gray-200 transition-colors duration-500 grid-bg">
+    <!-- Animated background elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="blob bg-purple-accent w-80 h-80 absolute top-20 left-20 opacity-20 floating-element"></div>
+        <div class="blob bg-purple-highlight w-96 h-96 absolute bottom-10 right-20 opacity-15 floating-element-delayed">
+        </div>
+        <div
+            class="blob bg-purple-accent w-72 h-72 absolute top-1/3 right-1/4 opacity-15 floating-element-more-delayed">
+        </div>
+        <div class="absolute inset-0 grid-overlay"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full glass py-4 z-50" x-data="{ open: false }">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+
+            <div class="flex items-center space-x-3">
+                <img src="/img/logo.jpg" alt="Logo"
+                    class="w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-purple-900 object-cover" />
+                <a href="index.html" class="text-2xl font-bold text-purple-700 dark:text-purple-400">
+                    goCreative
+                </a>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html#about" class="nav-link light-text hover:text-purple-highlight transition-colors">About</a>
+                <a href="index.html#services"
+                    class="nav-link light-text hover:text-purple-highlight transition-colors">Services</a>
+                <a href="index.html#projects"
+                    class="nav-link light-text hover:text-purple-highlight transition-colors">Projects</a>
+                <a href="index.html#team" class="nav-link light-text hover:text-purple-highlight transition-colors">Team</a>
+                <a href="index.html#testimonials"
+                    class="nav-link light-text hover:text-purple-highlight transition-colors">Testimonials</a>
+                <a href="index.html#contact" class="nav-link light-text hover:text-purple-highlight transition-colors">Contact</a>
+            </div>
+
+            <div class="flex items-center space-x-4">
+                <!-- Dark/Light Mode Toggle -->
+                <button @click="darkMode = !darkMode"
+                    class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-purple-light transition-colors">
+                    <i x-show="!darkMode" class="fas fa-moon text-purple-accent"></i>
+                    <i x-show="darkMode" class="fas fa-sun text-yellow-300" x-cloak></i>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button @click="open = !open"
+                    class="md:hidden w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-purple-light transition-colors">
+                    <i class="fas fa-bars text-purple-accent"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div x-show="open" class="md:hidden glass mt-4 p-4 rounded-lg mx-4" x-cloak>
+            <div class="flex flex-col space-y-3">
+                <a href="index.html#about" class="light-text hover:text-purple-highlight transition-colors py-2">About</a>
+                <a href="index.html#services" class="light-text hover:text-purple-highlight transition-colors py-2">Services</a>
+                <a href="index.html#projects" class="light-text hover:text-purple-highlight transition-colors py-2">Projects</a>
+                <a href="index.html#team" class="light-text hover:text-purple-highlight transition-colors py-2">Team</a>
+                <a href="index.html#testimonials"
+                    class="light-text hover:text-purple-highlight transition-colors py-2">Testimonials</a>
+                <a href="index.html#contact" class="light-text hover:text-purple-highlight transition-colors py-2">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Privacy Policy Content -->
+    <section class="pt-32 pb-20 relative">
+        <div class="container mx-auto px-4">
+            <div class="glass rounded-3xl p-8 md:p-12 shadow-2xl border border-white/10">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 text-center">
+                    <span class="gradient-text">Privacy Policy</span>
+                </h1>
+                <p class="text-center text-xl mb-10 light-subtle">Last Updated: January 1, 2023</p>
+                
+                <div class="prose prose-lg max-w-none dark:prose-invert prose-purple">
+                    <p class="light-text mb-8">
+                        At goCreative Digital Agency, we value your privacy and are committed to protecting your personal information. 
+                        This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our 
+                        website or use our services.
+                    </p>
+                    
+                    <div class="privacy-section">
+                        <h2 class="text-2xl font-bold mt-10 mb-4 light-text">1. Information We Collect</h2>
+                        <p class="light-subtle mb-4">
+                            We may collect the following types of information:
+                        </p>
+                        
+                        <h3 class="text-xl font-semibold mt-6 mb-3 light-text">Personal Information</h3>
+                        <ul class="privacy-list light-subtle">
+                            <li>Contact details (name, email address, phone number)</li>
+                            <li>Business information (company name, job title)</li>
+                            <li>Payment information for services</li>
+                            <li>Communication preferences</li>
+                        </ul>
+                        
+                        <h3 class="text-xl font-semibold mt-6 mb-3 light-text">Automatically Collected Information</h3>
+                        <ul class="privacy-list light-subtle">
+                            <li>IP address and browser type</li>
+                            <li>Device information</li>
+                            <li>Usage data and website analytics</li>
+                            <li>Cookies and similar tracking technologies</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="privacy-section">
+                        <h2 class="text-2xl font-bold mt-10 mb-4 light-text">2. How We Use Your Information</h2>
+                        <p class="light-subtle mb-4">
+                            We may use your information for the following purposes:
+                        </p>
+                        
+                        <ul class="privacy-list light-subtle">
+                            <li>To provide, operate, and maintain our services</li>
+                            <li>To process your requests and transactions</li>
+                            <li>To communicate with you about updates, security alerts, and support messages</li>
+                            <li>To improve our website, services, and user experience</li>
+                            <li>To develop new products, services, and features</li>
+                            <li>For marketing and promotional purposes (with your consent where required)</li>
+                            <li>To prevent fraud and enhance security</li>
+                            <li>To comply with legal obligations</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="privacy-section">
+                        <h2 class="text-2xl font-bold mt-10 mb-4 light-text">3. Legal Basis for Processing</h2>
+                        <p class="light-subtle mb-4">
+                            We process your personal information based on the following legal grounds:
+                        </p>
+                        
+                        <ul class="privacy-list light-subtle">
+                            <li><strong>Performance of a contract:</strong> When we need to fulfill our obligations under a service agreement</li>
+                            <li><strong>Legitimate interests:</strong> When processing is necessary for our business interests, provided they don't override your rights</li>
+                            <li><strong>Consent:</strong> When you have given explicit consent for specific purposes</li>
+                            <li><strong>Legal obligation:</strong> When processing is necessary to comply with the law</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="privacy-section">
+                        <h2 class="text-2xl font-bold mt-10 mb-4 light-text">4. How We Share Your Information</h2>
+                        <p class="light-subtle mb-4">
+                            We may share your information with:
+                        </p>
+                        
+                        <ul class="privacy-list light-subtle">
+                            <li><strong>Service providers:</strong> Third-party vendors who provide services on our behalf (e.g., payment processing, hosting, analytics)</li>
+                            <li><strong>Business partners:</strong> When necessary to provide services you've requested</li>
+                            <li><strong>Legal authorities:</strong> When required by law or to protect our rights</li>
+                            <li><strong>Business transfers:</strong> In connection with a merger, acquisition, or sale of assets</li>
+                        </ul>
+                        
+                        <p class="light-subtle mt-4">
+                            We require all third parties to respect the security of your personal information and to treat it in accordance with the law.
+                        </p>
+                    </div>
+                    
+                    <div class="privacy-section">
+                        <h2 class="text-2xl font-bold mt-10 mb-4 light-text">5. Data Retention</h2>
+                        <p class="light-subtle">
+                            We will retain your personal information only for as long as necessary to fulfill the purposes 
+                            for which we collected it, including to satisfy any legal, accounting, or reporting requirements.
+                        </p>
+                    </div>
+                    
+                    <div class="privacy-section">
+                        <h2 class="text-2xl font-bold mt-10 mb-4 light-text">6. Your Data Protection Rights</h2>
+                        <p class="light-subtle mb-4">
+                            Depending on your location, you may have the following rights regarding your personal information:
+                        </p>
+                        
+                        <ul class="privacy-list light-subtle">
+                            <li><strong>Access:</strong> The right to request copies of your personal data</li>
+                            <li><strong>Rectification:</strong> The right to request correction of inaccurate information</li>
+                            <li><strong>Erasure:</strong> The right to request deletion of your personal data</li>
+                            <li><strong>Restriction:</strong> The right to request limiting the processing of your data</li>
+                            <li><strong>Data portability:</strong> The right to request transfer of your data to another organization</li>
+                            <li><strong>Objection:</strong> The right to object to processing of your personal data</li>
+                            <li><strong>Withdraw consent:</strong> The right to withdraw consent where we rely on it to process your data</li>
+                        </ul>
+                        
+                        <p class="light-subtle mt-4">
+                            To exercise any of these rights, please contact us using the details provided in Section 10.
+                        </p>
+                    </div>
+                    
+                    <div class="privacy-section">
+                        <h2 class="text-2xl font-bold mt-10 mb-4 light-text">7. Cookies and Tracking Technologies</h2>
+                        <p class="light-subtle mb-4">
+                            We use cookies and similar tracking technologies to track activity on our website and store certain information. 
+                            The technologies we use may include:
+                        </p>
+                        
+                        <ul class="privacy-list light-subtle">
+                            <li><strong>Essential cookies:</strong> Required for the operation of our website</li>
+                            <li><strong>Analytical/performance cookies:</strong> Allow us to recognize and count visitors</li>
+                            <li><strong>Functionality cookies:</strong> Enable personalization and enhanced features</li>
+                            <li><strong>Targeting cookies:</strong> Record your visit and pages you visit</li>
+                        </ul>
+                        
+                        <p class="light-subtle mt-4">
+                            You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. 
+                            However, if you do not accept cookies, you may not be able to use some portions of our service.
+                        </p>
+                    </div>
+                    
+                    <div class="privacy-section">
+                        <h2 class="text-2xl font-bold mt-10 mb-4 light-text">8. Data Security</h2>
+                        <p class="light-subtle">
+                            We implement appropriate security measures to protect your personal information from unauthorized access, 
+                            alteration, disclosure, or destruction. These include internal reviews of our data collection, storage, 
+                            and processing practices and security measures, as well as physical security measures to guard against 
+                            unauthorized access to systems where we store personal data.
+                        </p>
+                        
+                        <p class="light-subtle mt-4">
+                            However, no method of transmission over the Internet or electronic storage is 100% secure. While we strive 
+                            to use commercially acceptable means to protect your personal information, we cannot guarantee its absolute security.
+                        </p>
+                    </div>
+                    
+                    <div class="privacy-section">
+                        <h2 class="text-2xl font-bold mt-10 mb-4 light-text">9. International Data Transfers</h2>
+                        <p class="light-subtle">
+                            Your information may be transferred to and processed in countries other than your country of residence. 
+                            These countries may have data protection laws that are different from the laws of your country.
+                        </p>
+                        
+                        <p class="light-subtle mt-4">
+                            Whenever we transfer your personal information outside of your country, we ensure a similar degree of 
+                            protection is afforded to it by implementing appropriate safeguards.
+                        </p>
+                    </div>
+                    
+                    <div class="privacy-section">
+                        <h2 class="text-2xl font-bold mt-10 mb-4 light-text">10. Children's Privacy</h2>
+                        <p class="light-subtle">
+                            Our service is not intended for use by children under the age of 18 ("Children"). We do not knowingly 
+                            collect personally identifiable information from Children. If you become aware that a Child has provided 
+                            us with personal data, please contact us. If we become aware that we have collected personal data from 
+                            Children without verification of parental consent, we take steps to remove that information from our servers.
+                        </p>
+                    </div>
+                    
+                    <div class="privacy-section">
+                        <h2 class="text-2xl font-bold mt-10 mb-4 light-text">11. Changes to This Privacy Policy</h2>
+                        <p class="light-subtle">
+                            We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new 
+                            Privacy Policy on this page and updating the "Last Updated" date at the top of this Privacy Policy.
+                        </p>
+                        
+                        <p class="light-subtle mt-4">
+                            You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy 
+                            are effective when they are posted on this page.
+                        </p>
+                    </div>
+                    
+                    <div class="privacy-section">
+                        <h2 class="text-2xl font-bold mt-10 mb-4 light-text">12. Contact Us</h2>
+                        <p class="light-subtle mb-4">
+                            If you have any questions about this Privacy Policy, please contact us:
+                        </p>
+                        
+                        <ul class="light-subtle list-none pl-0">
+                            <li class="mb-2"><strong>By email:</strong> therealteckyguys.com</li>
+                            <li class="mb-2"><strong>By phone:</strong> +234 806 5373 747</li>
+                            <li class="mb-2"><strong>Through our website:</strong> <a href="index.html#contact" class="text-purple-accent hover:underline">Contact Form</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 glass border-t border-white/10 relative">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="index.html" class="text-2xl font-bold text-purple-accent">goCreative</a>
+                    <p class="mt-2 light-subtle">Crafting digital excellence since 2015</p>
+                </div>
+
+                <div class="flex space-x-6">
+                    <a href="privacy.html" class="light-text hover:text-purple-highlight transition-colors font-bold">Privacy Policy</a>
+                    <a href="terms.html" class="light-text hover:text-purple-highlight transition-colors">Terms of Service</a>
+                    <a href="#" class="light-text hover:text-purple-highlight transition-colors">Careers</a>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 mt-8 pt-8 text-center">
+                <p class="light-subtle">© 2023 goCreative Digital Agency. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
