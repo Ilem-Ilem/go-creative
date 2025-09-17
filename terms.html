@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ darkMode: true }" :class="{ 'dark': darkMode }">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - goCreative Digital Agency</title>
+    <meta name="description"
+        content="Terms of Service for goCreative Digital Agency. Learn about our policies, rights, and obligations.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://go-creative.vercel.app/terms">
+    <meta property="og:title" content="Terms of Service - goCreative Digital Agency">
+    <meta property="og:description"
+        content="Terms of Service for goCreative Digital Agency. Learn about our policies, rights, and obligations.">
+    <meta property="og:image" content="https://go-creative.vercel.app/img/logo.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://go-creative.vercel.app/terms">
+    <meta name="twitter:title" content="Terms of Service - goCreative Digital Agency">
+    <meta name="twitter:description"
+        content="Terms of Service for goCreative Digital Agency. Learn about our policies, rights, and obligations.">
+    <meta name="twitter:image" content="https://go-creative.vercel.app/img/logo.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/img/logo.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        purple: {
+                            dark: '#0F0824',
+                            light: '#1A1038',
+                            accent: '#7C3AED',
+                            highlight: '#9F67FF'
+                        },
+                        light: {
+                            text: '#2D3748',
+                            subtle: '#4A5568',
+                            glass: 'rgba(255, 255, 255, 0.7)'
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': {
+                                transform: 'translateY(0)'
+                            },
+                            '50%': {
+                                transform: 'translateY(-20px)'
+                            },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #2D3748;
+        }
+
+        .dark .glass {
+            background: rgba(15, 8, 36, 0.6);
+            color: #E2E8F0;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .grid-bg {
+            background-image:
+                linear-gradient(45deg, rgba(156, 39, 176, 0.5) 2px, transparent 2px),
+                linear-gradient(45deg, rgba(156, 39, 176, 0.5) 2px, transparent 2px);
+            background-size: 40px 40px;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #9F67FF 0%, #6E45E2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .blob {
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.2;
+        }
+
+        .grid-overlay {
+            background-image: radial-gradient(circle, rgba(159, 103, 255, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: linear-gradient(90deg, #9F67FF 0%, #6E45E2 100%);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Light mode specific adjustments */
+        .light-text {
+            color: #2D3748;
+        }
+
+        .light-subtle {
+            color: #4A5568;
+        }
+
+        .dark .light-text {
+            color: #E2E8F0;
+        }
+
+        .dark .light-subtle {
+            color: #CBD5E0;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-800 dark:bg-purple-dark dark:text-gray-200 transition-colors duration-500 grid-bg">
+    <!-- Animated background elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="blob bg-purple-accent w-80 h-80 absolute top-20 left-20 opacity-20 floating-element"></div>
+        <div class="blob bg-purple-highlight w-96 h-96 absolute bottom-10 right-20 opacity-15 floating-element-delayed">
+        </div>
+        <div
+            class="blob bg-purple-accent w-72 h-72 absolute top-1/3 right-1/4 opacity-15 floating-element-more-delayed">
+        </div>
+        <div class="absolute inset-0 grid-overlay"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full glass py-4 z-50" x-data="{ open: false }">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+
+            <div class="flex items-center space-x-3">
+                <img src="/img/logo.jpg" alt="Logo"
+                    class="w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-purple-900 object-cover" />
+                <a href="index.html" class="text-2xl font-bold text-purple-700 dark:text-purple-400">
+                    goCreative
+                </a>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html#about" class="nav-link light-text hover:text-purple-highlight transition-colors">About</a>
+                <a href="index.html#services"
+                    class="nav-link light-text hover:text-purple-highlight transition-colors">Services</a>
+                <a href="index.html#projects"
+                    class="nav-link light-text hover:text-purple-highlight transition-colors">Projects</a>
+                <a href="index.html#team" class="nav-link light-text hover:text-purple-highlight transition-colors">Team</a>
+                <a href="index.html#testimonials"
+                    class="nav-link light-text hover:text-purple-highlight transition-colors">Testimonials</a>
+                <a href="index.html#contact" class="nav-link light-text hover:text-purple-highlight transition-colors">Contact</a>
+            </div>
+
+            <div class="flex items-center space-x-4">
+                <!-- Dark/Light Mode Toggle -->
+                <button @click="darkMode = !darkMode"
+                    class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-purple-light transition-colors">
+                    <i x-show="!darkMode" class="fas fa-moon text-purple-accent"></i>
+                    <i x-show="darkMode" class="fas fa-sun text-yellow-300" x-cloak></i>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button @click="open = !open"
+                    class="md:hidden w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-purple-light transition-colors">
+                    <i class="fas fa-bars text-purple-accent"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div x-show="open" class="md:hidden glass mt-4 p-4 rounded-lg mx-4" x-cloak>
+            <div class="flex flex-col space-y-3">
+                <a href="index.html#about" class="light-text hover:text-purple-highlight transition-colors py-2">About</a>
+                <a href="index.html#services" class="light-text hover:text-purple-highlight transition-colors py-2">Services</a>
+                <a href="index.html#projects" class="light-text hover:text-purple-highlight transition-colors py-2">Projects</a>
+                <a href="index.html#team" class="light-text hover:text-purple-highlight transition-colors py-2">Team</a>
+                <a href="index.html#testimonials"
+                    class="light-text hover:text-purple-highlight transition-colors py-2">Testimonials</a>
+                <a href="index.html#contact" class="light-text hover:text-purple-highlight transition-colors py-2">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Terms of Service Content -->
+    <section class="pt-32 pb-20 relative">
+        <div class="container mx-auto px-4">
+            <div class="glass rounded-3xl p-8 md:p-12 shadow-2xl border border-white/10">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 text-center">
+                    <span class="gradient-text">Terms of Service</span>
+                </h1>
+                <p class="text-center text-xl mb-10 light-subtle">Last Updated: January 1, 2023</p>
+                
+                <div class="prose prose-lg max-w-none dark:prose-invert prose-purple">
+                    <p class="light-text mb-8">
+                        Welcome to goCreative Digital Agency. These Terms of Service govern your use of our website and services. 
+                        By accessing or using our services, you agree to be bound by these Terms.
+                    </p>
+                    
+                    <h2 class="text-2xl font-bold mt-10 mb-4 light-text">1. Acceptance of Terms</h2>
+                    <p class="light-subtle mb-6">
+                        By accessing or using the services provided by goCreative Digital Agency ("we," "us," or "our"), 
+                        you acknowledge that you have read, understood, and agree to be bound by these Terms of Service. 
+                        If you do not agree to these terms, please do not use our services.
+                    </p>
+                    
+                    <h2 class="text-2xl font-bold mt-10 mb-4 light-text">2. Services Provided</h2>
+                    <p class="light-subtle mb-6">
+                        goCreative Digital Agency provides web development, mobile application development, UI/UX design, 
+                        digital marketing, SEO optimization, and cloud solutions services. The specific details of services 
+                        will be outlined in individual project agreements or statements of work.
+                    </p>
+                    
+                    <h2 class="text-2xl font-bold mt-10 mb-4 light-text">3. Portfolio Rights</h2>
+                    <p class="light-subtle mb-6">
+                        By engaging our services, you grant goCreative Digital Agency the right to display your project 
+                        as part of our portfolio, including but not limited to our website, social media channels, 
+                        marketing materials, and proposals to potential clients.
+                    </p>
+                    
+                    <p class="light-subtle mb-6">
+                        We may include project details such as:
+                    </p>
+                    
+                    <ul class="light-subtle mb-6 list-disc pl-6">
+                        <li class="mb-2">Project name and description</li>
+                        <li class="mb-2">Screenshots or images of the completed work</li>
+                        <li class="mb-2">Technologies and methodologies used</li>
+                        <li class="mb-2">Your company name and logo (unless otherwise specified)</li>
+                        <li class="mb-2">Results and outcomes achieved</li>
+                    </ul>
+                    
+                    <p class="light-subtle mb-6">
+                        If you wish to exclude your project from our portfolio, you must request this in writing before 
+                        the commencement of work. Additional confidentiality agreements may be arranged, potentially 
+                        affecting project pricing.
+                    </p>
+                    
+                    <h2 class="text-2xl font-bold mt-10 mb-4 light-text">4. Client Responsibilities</h2>
+                    <p class="light-subtle mb-6">
+                        Clients agree to:
+                    </p>
+                    
+                    <ul class="light-subtle mb-6 list-disc pl-6">
+                        <li class="mb-2">Provide accurate and complete information necessary for project completion</li>
+                        <li class="mb-2">Respond to requests for feedback and approval in a timely manner</li>
+                        <li class="mb-2">Make necessary resources available as required for project completion</li>
+                        <li class="mb-2">Adhere to payment schedules as outlined in project agreements</li>
+                    </ul>
+                    
+                    <h2 class="text-2xl font-bold mt-10 mb-4 light-text">5. Intellectual Property</h2>
+                    <p class="light-subtle mb-6">
+                        Upon full payment for services, clients receive ownership of the final deliverables as specified 
+                        in the project agreement. goCreative retains the right to use the work for promotional purposes 
+                        as described in Section 3.
+                    </p>
+                    
+                    <p class="light-subtle mb-6">
+                        Pre-existing intellectual property from both parties remains the property of the original owner.
+                    </p>
+                    
+                    <h2 class="text-2xl font-bold mt-10 mb-4 light-text">6. Payment Terms</h2>
+                    <p class="light-subtle mb-6">
+                        Payment terms will be specified in individual project agreements. Typically, we require:
+                    </p>
+                    
+                    <ul class="light-subtle mb-6 list-disc pl-6">
+                        <li class="mb-2">A deposit before work commences</li>
+                        <li class="mb-2">Milestone payments throughout the project lifecycle</li>
+                        <li class="mb-2">Final payment before delivery of completed project</li>
+                    </ul>
+                    
+                    <p class="light-subtle mb-6">
+                        Late payments may result in project pausing or termination of services.
+                    </p>
+                    
+                    <h2 class="text-2xl font-bold mt-10 mb-4 light-text">7. Confidentiality</h2>
+                    <p class="light-subtle mb-6">
+                        We respect the confidentiality of our clients' information. However, by default, we reserve the 
+                        right to showcase completed work in our portfolio as described in Section 3.
+                    </p>
+                    
+                    <p class="light-subtle mb-6">
+                        For projects requiring full confidentiality, clients must request a Non-Disclosure Agreement 
+                        before project commencement.
+                    </p>
+                    
+                    <h2 class="text-2xl font-bold mt-10 mb-4 light-text">8. Limitation of Liability</h2>
+                    <p class="light-subtle mb-6">
+                        goCreative Digital Agency's total liability for any claim arising out of or relating to our 
+                        services shall not exceed the total amount paid by the client for the specific project in question.
+                    </p>
+                    
+                    <h2 class="text-2xl font-bold mt-10 mb-4 light-text">9. Changes to Terms</h2>
+                    <p class="light-subtle mb-6">
+                        We reserve the right to modify these Terms of Service at any time. Changes will be effective 
+                        immediately upon posting to our website. Continued use of our services after changes constitutes 
+                        acceptance of the modified terms.
+                    </p>
+                    
+                    <h2 class="text-2xl font-bold mt-10 mb-4 light-text">10. Governing Law</h2>
+                    <p class="light-subtle mb-6">
+                        These Terms shall be governed by and construed in accordance with the laws of the Federal Republic of Nigeria, 
+                        without regard to its conflict of law provisions.
+                    </p>
+                    
+                    <h2 class="text-2xl font-bold mt-10 mb-4 light-text">11. Contact Information</h2>
+                    <p class="light-subtle mb-6">
+                        For questions about these Terms of Service, please contact us at:
+                    </p>
+                    
+                    <p class="light-subtle mb-6">
+                        goCreative Digital Agency<br>
+                        Email: therealteckyguys.com<br>
+                        Phone: +234 806 5373 747
+                    </p>
+                </div>
+                
+                <div class="mt-12 pt-8 border-t border-white/10">
+                    <p class="light-subtle text-center">
+                        By using our services, you acknowledge that you have read and agree to these Terms of Service.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 glass border-t border-white/10 relative">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="index.html" class="text-2xl font-bold text-purple-accent">goCreative</a>
+                    <p class="mt-2 light-subtle">Crafting digital excellence since 2015</p>
+                </div>
+
+                <div class="flex space-x-6">
+                    <a href="#" class="light-text hover:text-purple-highlight transition-colors">Privacy Policy</a>
+                    <a href="terms.html" class="light-text hover:text-purple-highlight transition-colors font-bold">Terms of Service</a>
+                    <a href="#" class="light-text hover:text-purple-highlight transition-colors">Careers</a>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 mt-8 pt-8 text-center">
+                <p class="light-subtle">© 2023 goCreative Digital Agency. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
