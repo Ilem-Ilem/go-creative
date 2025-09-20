@@ -286,23 +286,7 @@
             </a>
             <div class="w-px h-4 bg-gradient-to-b from-purple-500/50 to-transparent"></div>
 
-            <a href="#"
-                class="w-12 h-12 flex items-center justify-center rounded-full glass border border-white/20 hover:border-purple-accent hover:scale-110 transition-all shadow-lg my-3">
-                <i class="fab fa-twitter text-xl light-text"></i>
-            </a>
-            <div class="w-px h-4 bg-gradient-to-b from-purple-500/50 to-transparent"></div>
-
-            <a href="#"
-                class="w-12 h-12 flex items-center justify-center rounded-full glass border border-white/20 hover:border-purple-accent hover:scale-110 transition-all shadow-lg my-3">
-                <i class="fab fa-linkedin-in text-xl light-text"></i>
-            </a>
-            <div class="w-px h-4 bg-gradient-to-b from-purple-500/50 to-transparent"></div>
-
-            <a href="#"
-                class="w-12 h-12 flex items-center justify-center rounded-full glass border border-white/20 hover:border-purple-accent hover:scale-110 transition-all shadow-lg my-3">
-                <i class="fab fa-instagram text-xl light-text"></i>
-            </a>
-
+           
             <!-- Line (after icons) -->
             <div class="w-px h-16 bg-gradient-to-t from-purple-500/50 to-transparent"></div>
         </div>
@@ -590,26 +574,27 @@
 
                 <!-- project 5 -->
                 <div
-                class="rounded-3xl overflow-hidden glass border border-white/10 shadow-xl hover:shadow-2xl transition-all duration-500">
-                <img src="./img/vasileimart.PNG" alt="Project 1" class="w-full h-64 object-cover">
-                <div class="p-6 flex flex-col items-center text-center">
-                    <h3 class="text-2xl font-bold text-white mb-2">vasileiamart</h3>
-                    <p class="text-white/90 mb-4">
-                        A powerfull real time ecommerce website with various tores and discounts, powered by PHP and laravel
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-6 justify-center">
-                        <span class="bg-purple-accent/80 text-white px-3 py-1 rounded-full text-sm">Blade</span>
-                        <span class="bg-purple-accent/80 text-white px-3 py-1 rounded-full text-sm">Laravel</span>
-                        <span class="bg-purple-accent/80 text-white px-3 py-1 rounded-full text-sm">Mysql</span>
+                    class="rounded-3xl overflow-hidden glass border border-white/10 shadow-xl hover:shadow-2xl transition-all duration-500">
+                    <img src="./img/vasileimart.PNG" alt="Project 1" class="w-full h-64 object-cover">
+                    <div class="p-6 flex flex-col items-center text-center">
+                        <h3 class="text-2xl font-bold text-white mb-2">vasileiamart</h3>
+                        <p class="text-white/90 mb-4">
+                            A powerfull real time ecommerce website with various tores and discounts, powered by PHP and
+                            laravel
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6 justify-center">
+                            <span class="bg-purple-accent/80 text-white px-3 py-1 rounded-full text-sm">Blade</span>
+                            <span class="bg-purple-accent/80 text-white px-3 py-1 rounded-full text-sm">Laravel</span>
+                            <span class="bg-purple-accent/80 text-white px-3 py-1 rounded-full text-sm">Mysql</span>
+                        </div>
+                        <a href="https://vasileiamart.com/" target="_blank"
+                            class="px-6 py-2 glass rounded-full text-white border border-white/20 hover:border-purple-accent/50 transition-colors">
+                            View Site
+                        </a>
                     </div>
-                    <a href="https://vasileiamart.com/" target="_blank"
-                        class="px-6 py-2 glass rounded-full text-white border border-white/20 hover:border-purple-accent/50 transition-colors">
-                        View Site
-                    </a>
                 </div>
-            </div>
 
-            <div
+                <div
                     class="rounded-3xl overflow-hidden glass border border-white/10 shadow-xl hover:shadow-2xl transition-all duration-500">
                     <img src="./img//Capture.PNG" alt="Project 2" class="w-full h-64 object-cover">
                     <div class="p-6 flex flex-col items-center text-center">
@@ -629,6 +614,129 @@
         </div>
     </section>
 
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 relative">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 light-text">What Our <span
+                    class="gradient-text">Clients Say</span></h2>
+            <p class="text-center text-xl mb-16 max-w-2xl mx-auto light-subtle">Hear from businesses we've helped
+                achieve their digital goals</p>
+
+            <div class="relative max-w-6xl mx-auto">
+                <!-- Testimonial Slider -->
+                <div class="testimonial-slider overflow-x-auto snap-x snap-mandatory flex gap-8 pb-8"
+                    x-data="{ currentSlide: 0 }"
+                    x-init="setInterval(() => { currentSlide = (currentSlide + 1) % 3 }, 5000)">
+                    <!-- Testimonial 1 -->
+                    <div class="min-w-full md:min-w-[calc(50%-16px)] lg:min-w-[calc(33.333%-21.333px)] snap-start"
+                        x-show="currentSlide === 0" x-transition:enter="transition ease-out duration-300"
+                        x-transition:enter-start="opacity-0 transform scale-90"
+                        x-transition:enter-end="opacity-100 transform scale-100">
+                        <div class="glass rounded-3xl p-8 border border-white/10 h-full">
+                            <div class="flex items-center mb-6">
+                                <div
+                                    class="w-16 h-16 rounded-full overflow-hidden mr-4 border-2 border-purple-accent/30">
+                                    <img src="/img/461984689_2201605393557693_5417568396456704416_n.jpg"
+                                        alt="Client" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <h4 class="font-bold light-text">MHAGYY</h4>
+                                    <p class="light-subtle"></p>
+                                </div>
+                            </div>
+                            <div class="mb-6">
+                                <div class="flex text-yellow-300 mb-2">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="light-subtle italic">"goCreative transformed our outdated website into a
+                                    modern, responsive platform that has increased our conversion rate by 40%. Their
+                                    attention to detail and technical expertise exceeded our expectations."</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="min-w-full md:min-w-[calc(50%-16px)] lg:min-w-[calc(33.333%-21.333px)] snap-start"
+                        x-show="currentSlide === 1" x-transition:enter="transition ease-out duration-300"
+                        x-transition:enter-start="opacity-0 transform scale-90"
+                        x-transition:enter-end="opacity-100 transform scale-100">
+                        <div class="glass rounded-3xl p-8 border border-white/10 h-full">
+                            <div class="flex items-center mb-6">
+                                <div
+                                    class="w-16 h-16 rounded-full overflow-hidden mr-4 border-2 border-purple-accent/30">
+                                    <img src="/img/518304006_122120923670875939_640609639724538373_n.jpg"
+                                        alt="Client" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <h4 class="font-bold light-text">Ogban Ilem</h4>
+                                    <p class="light-subtle">CEO LiBan's Farm</p>
+                                </div>
+                            </div>
+                            <div class="mb-6">
+                                <div class="flex text-yellow-300 mb-2">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <p class="light-subtle italic">"The e-commerce solution developed by goCreative has been
+                                    a game-changer for our business. Their team was responsive, professional, and
+                                    delivered on time despite our tight deadline."</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="min-w-full md:min-w-[calc(50%-16px)] lg:min-w-[calc(33.333%-21.333px)] snap-start"
+                        x-show="currentSlide === 2" x-transition:enter="transition ease-out duration-300"
+                        x-transition:enter-start="opacity-0 transform scale-90"
+                        x-transition:enter-end="opacity-100 transform scale-100">
+                        <div class="glass rounded-3xl p-8 border border-white/10 h-full">
+                            <div class="flex items-center mb-6">
+                                <div
+                                    class="w-16 h-16 rounded-full overflow-hidden mr-4 border-2 border-purple-accent/30">
+                                    <img src="/img/MIle.jpg"
+                                        alt="Client" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <h4 class="font-bold light-text">Milionet Mile</h4>
+                                    <p class="light-subtle">Nurse</p>
+                                </div>
+                            </div>
+                            <div class="mb-6">
+                                <div class="flex text-yellow-300 mb-2">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="light-subtle italic">"Working with goCreative was a fantastic experience. They
+                                    took the time to understand our unique needs and delivered a custom learning
+                                    platform that has received overwhelmingly positive feedback from our users."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Dots -->
+                <div class="flex justify-center mt-8 space-x-3">
+                    <button class="w-3 h-3 rounded-full bg-purple-accent/30 transition-all"
+                        :class="{ 'bg-purple-accent': currentSlide === 0 }" @click="currentSlide = 0"></button>
+                    <button class="w-3 h-3 rounded-full bg-purple-accent/30 transition-all"
+                        :class="{ 'bg-purple-accent': currentSlide === 1 }" @click="currentSlide = 1"></button>
+                    <button class="w-3 h-3 rounded-full bg-purple-accent/30 transition-all"
+                        :class="{ 'bg-purple-accent': currentSlide === 2 }" @click="currentSlide = 2"></button>
+                </div>
+
+            </div>
+        </div>
+    </section>
 
     <!-- Contact Section -->
     <section id="contact" class="py-20 relative">
@@ -746,7 +854,7 @@
                                 </div>
                                 <div>
                                     <h4 class="font-bold mb-1 light-text">Email</h4>
-                                    <p class="light-subtle">therealteckyguys.com</p>
+                                    <p class="light-subtle">gocreativeglobal@gmail.com</p>
                                 </div>
                             </div>
 
@@ -799,8 +907,10 @@
                 </div>
 
                 <div class="flex space-x-6">
-                    <a href="privacy.html" class="light-text hover:text-purple-highlight transition-colors">Privacy Policy</a>
-                    <a href="terms.html" class="light-text hover:text-purple-highlight transition-colors">Terms of Service</a>
+                    <a href="privacy.html" class="light-text hover:text-purple-highlight transition-colors">Privacy
+                        Policy</a>
+                    <a href="terms.html" class="light-text hover:text-purple-highlight transition-colors">Terms of
+                        Service</a>
                     <a href="#" class="light-text hover:text-purple-highlight transition-colors">Careers</a>
                 </div>
             </div>
